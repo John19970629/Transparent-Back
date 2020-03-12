@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 import PIL.Image as Image
 
 # Load image
-image_bgr = cv2.imread('5.jpg')
+image_bgr = cv2.imread('Images.jpg')
 # Convert to RGB
 image_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
 # Rectange values: start x, start y, width, height
@@ -38,7 +38,7 @@ image_rgb_nobg = image_rgb * mask_2[:, :, np.newaxis]
 plt.imshow(image_rgb_nobg), plt.axis("on")
 plt.show()
 
-image_rgb=cv2.imwrite('5_2.png',image_rgb_nobg)
+image_rgb=cv2.imwrite('Images_cut.png',image_rgb_nobg)
 
 # 以第一個畫素為準，相同色改為透明
 def transparent_back(img):
@@ -54,8 +54,8 @@ def transparent_back(img):
                 img.putpixel(dot,color_1)
     return img
 
-img=Image.open('5_2.png')
+img=Image.open('Images_cut.png')
 img=transparent_back(img)
-img.save('5_3.png')
+img.save('Images_TB.png')
 
 
